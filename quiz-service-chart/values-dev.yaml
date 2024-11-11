@@ -24,6 +24,7 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 8080
   targetPort: 8080
+env: dev
 
 envs:
   - name: SPRING_PROFILES_ACTIVE
