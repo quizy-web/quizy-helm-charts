@@ -38,15 +38,9 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
   hosts:
-    - host: dev.example.com
       paths:
         - path: /
           pathType: Prefix
-          backend:
-            service:
-              name: dev-quiz-service
-              port:
-                name: http
 
 env: dev
 
