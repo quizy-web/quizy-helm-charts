@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "23ac5fa6d051090c517f417a8e6564d8f9826d7c"
+  tag: "f98e47cebcff242716f85a1e30655b0b5ff37f0c"
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 fullnameOverride: "dev-quiz-service"
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
@@ -35,6 +35,15 @@ ingress:
     - paths:
         - path: /
           pathType: Prefix
+<<<<<<< HEAD
 
 env: dev
 
+=======
+          backend:
+            service:
+              name: dev-quiz-service
+              port:
+                name: http
+env: dev
+>>>>>>> 62faf6174ebe8af1d5a5a634e9ffc80312bac5cd
