@@ -24,26 +24,26 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 8080
   targetPort: 8080
-# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
-ingress:
-  enabled: true
-  className: "alb"
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-  hosts:
-    - paths:
-        - path: /
-          pathType: Prefix
-<<<<<<< HEAD
-
 env: dev
 
-=======
-          backend:
-            service:
-              name: dev-quiz-service
-              port:
-                name: http
-env: dev
->>>>>>> 62faf6174ebe8af1d5a5a634e9ffc80312bac5cd
+envs:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "dev"
+  - name: DATABASE_HOST
+    value: "k8s-demo-rds.c1g6swmoyqe1.ap-northeast-2.rds.amazonaws.com"
+  - name: DATABASE_PORT
+    value: "3306"
+  - name: DATABASE_NAME
+    value: "quiz"
+  - name: JPA_DDL_AUTO
+    value: "create"
+  - name: DATABASE_USER
+    valueFrom:
+      secretKeyRef:
+        name: quiz-service-dev
+        key: DATABASE_USER
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: quiz-service-dev
+        key: DATABASE_PASSWORD
