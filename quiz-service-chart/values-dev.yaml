@@ -29,7 +29,7 @@ envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
   - name: DATABASE_HOST
-    value: "k8s-demo-rds.c1g6swmoyqe1.ap-northeast-2.rds.amazonaws.com"
+    value: "quizy-k8s-resource-rds.c1g6swmoyqe1.ap-northeast-2.rds.amazonaws.com"
   - name: DATABASE_PORT
     value: "3306"
   - name: DATABASE_NAME
