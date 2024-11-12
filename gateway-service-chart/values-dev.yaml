@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "7bf31b43d3fd72cbc8bd94224da2676d3bd0bdb7-11789923896"
+  tag: "f5cc670ba1f5e13e63008082e855ff1c9ace3c21-11790033859"
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 fullnameOverride: "dev-gateway-service"
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
