@@ -26,5 +26,5 @@ service:
   targetPort: 8080
 env: dev
 envs:
-  name: SPRING_PROFILES_ACTIVE
-  value: "dev"
+  - name: SPRING_PROFILES_ACTIVE
+    value: "dev"
