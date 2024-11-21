@@ -6,7 +6,7 @@
 replicaCount: 1
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: 358279808022.dkr.ecr.ap-northeast-2.amazonaws.com/quizy
+  repository: asia-northeast3-docker.pkg.dev/folkloric-house-435308-a9/quizy/gateway-service
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -20,29 +20,31 @@ serviceAccount:
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-  type: ClusterIP
+  type: NodePort
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 8080
+  port: 80
   targetPort: 8080
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "alb"
+  className: "gce"
   annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
   hosts:
     - paths:
-        - path: /
-          pathType: Prefix
+        - path: /*
+          pathType: ImplementationSpecific
           backend:
             service:
               name: dev-gateway-service
               port:
-                name: http
+                number: 80
 env: dev
 envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
   - name: GATEWAY_HOST
-    value: "k8s-apps-devgatew-4d7f7a82e4-1838977854.ap-northeast-2.elb.amazonaws.com"
+    value: "34.144.200.195"
+  - name: JWT_SECRET
+    value: "secret-sadfasdfasdf-sadfasdfasdf-asdfasdf-asdf-123123"
