@@ -42,13 +42,6 @@ ingress:
               name: dev-gateway-service
               port:
                 number: 80
-        - path: /kafka-ui(/|$)(.*)
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: kafka-ui
-              port:
-                number: 80
 
 env: dev
 envs:
