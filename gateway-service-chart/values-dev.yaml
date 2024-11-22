@@ -33,13 +33,13 @@ ingress:
   hosts:
     - host: ""  # 빈 문자열은 모든 호스트를 의미
       paths:
-        - path: /ui/*
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: kafka-ui
-              port:
-                number: 80
+#        - path: /ui/*
+#          pathType: ImplementationSpecific
+#          backend:
+#            service:
+#              name: kafka-ui
+#              port:
+#                number: 80
         - path: /*
           pathType: ImplementationSpecific
           backend:
