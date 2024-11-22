@@ -1,0 +1,31 @@
+replicaCount: 1
+
+image:
+  repository: redis
+  pullPolicy: IfNotPresent
+  tag: "7.2"
+
+nameOverride: ""
+fullnameOverride: "redis"
+
+serviceAccount:
+  create: false
+
+# Redis 설정
+redis:
+  config:
+    maxmemory: "2gb"
+    maxmemory-policy: "allkeys-lru"
+
+service:
+  type: LoadBalancer
+  port: 6379
+  loadBalancerSourceRanges: "112.186.245.109/32"
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "200m"

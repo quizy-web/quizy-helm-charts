@@ -49,4 +49,4 @@ envs:
   - name: KAFKA_BOOTSTRAP_SERVERS
     value: "kafka.kafka.svc.cluster.local:9092"
   - name: REDIS_HOST
-    value:
+    value: redis.redis.svc
