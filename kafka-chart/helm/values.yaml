@@ -1,6 +1,6 @@
 global:
   storageClass: premium-rwo-retain-zonal
-  imageRegistry: "asia-northeast3-docker.pkg.dev/folkloric-house-435308-a9/quizy"
+  imageRegistry: "asia-northeast3-docker.pkg.dev/civic-champion-442512-n9/quizy"
 
 kafka:
   replicaCount: 3
@@ -12,7 +12,7 @@ kafka:
     kafka:
       enabled: false
   zookeeper:
-    replicaCount: 3
+    replicaCount: 1
     metrics:
       enabled: false
     persistence:
