@@ -21,6 +21,14 @@ spec:
           imagePullPolicy: "{{ .Values.kafkaUi.image.pullPolicy }}"
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
           env:
             {{- range .Values.kafkaUi.envs }}
             - name: {{ .name }}
