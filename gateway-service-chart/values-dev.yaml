@@ -27,25 +27,24 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "gce"
+  className: "nginx"
   annotations:
-    kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
+    kubernetes.io/ingress.class: "nginx"
   hosts:
     - host: ""  # 빈 문자열은 모든 호스트를 의미
       paths:
-        - path: /kafka-ui/*
+        - path: /*
           pathType: ImplementationSpecific
           backend:
             service:
-              name: kafka-ui
+              name: dev-gateway-service
               port:
                 number: 80
         - path: /*
           pathType: ImplementationSpecific
           backend:
             service:
-              name: dev-gateway-service
+              name: kafka-ui
               port:
                 number: 80
 
