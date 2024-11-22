@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "c37729e1923866c42cb1050869363d61278c2fc9-11836864880"
+  tag: "b2a4a504dedd211385387295aa25ba81f2962dac-11970248479"
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 fullnameOverride: "dev-quiz-service"
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
@@ -29,9 +29,7 @@ envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
   - name: DATABASE_HOST
-    value: "quizy-k8s-resource-rds.c1g6swmoyqe1.ap-northeast-2.rds.amazonaws.com"
-  - name: DATABASE_PORT
-    value: "3306"
+    value: "10.228.0.3"
   - name: DATABASE_NAME
     value: "quiz"
   - name: JPA_DDL_AUTO
