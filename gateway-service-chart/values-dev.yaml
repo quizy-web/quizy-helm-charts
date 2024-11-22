@@ -50,4 +50,4 @@ envs:
   - name: JWT_SECRET
     value: "secret-sadfasdfasdf-sadfasdfasdf-asdfasdf-asdf-123123"
   - name: REDIS_HOST
-    value: "redis.redis.svc.cluster.local"
+    value: redis.redis.svc.cluster.local

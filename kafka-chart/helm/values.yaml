@@ -44,9 +44,9 @@ kafkaUi:
     - name: KAFKA_CLUSTERS_0_NAME
       value: quizy-cluster
     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-      value: 10.21.105.151:9092
+      value: kafka.kafka.svc.cluster.local:9092
     - name: KAFKA_CLUSTERS_0_ZOOKEEPER
-      value: 10.21.176.220:2181
+      value: kafka-zookeeper.kafka.svc.cluster.local:2181
 
 ingress:
   enabled: true
