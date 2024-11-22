@@ -32,7 +32,15 @@ ingress:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
   hosts:
-    - paths:
+    - host: ""  # 빈 문자열은 모든 호스트를 의미
+      paths:
+        - path: /kafka-ui/*
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: kafka-ui
+              port:
+                number: 80
         - path: /*
           pathType: ImplementationSpecific
           backend:
@@ -40,6 +48,7 @@ ingress:
               name: dev-gateway-service
               port:
                 number: 80
+
 env: dev
 envs:
   - name: SPRING_PROFILES_ACTIVE
