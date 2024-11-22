@@ -30,6 +30,8 @@ ingress:
   className: "nginx"
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
   hosts:
     - host: ""  # 빈 문자열은 모든 호스트를 의미
       paths:
@@ -40,7 +42,7 @@ ingress:
               name: dev-gateway-service
               port:
                 number: 80
-        - path: /*
+        - path: /kafka-ui(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
