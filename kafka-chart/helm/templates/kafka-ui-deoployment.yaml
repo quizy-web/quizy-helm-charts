@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-ui
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: kafka-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-ui
+  template:
+    metadata:
+      labels:
+        app: kafka-ui
+    spec:
+      containers:
+        - name: kafka-ui
+          image: "{{ .Values.kafkaUi.image.repository }}:{{ .Values.kafkaUi.image.tag }}"
+          imagePullPolicy: "{{ .Values.kafkaUi.image.pullPolicy }}"
+          ports:
+            - containerPort: 8080
+          env:
+            {{- range .Values.kafkaUi.envs }}
+            - name: {{ .name }}
+              value: "{{ .value }}"
+            {{- end }}
