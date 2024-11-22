@@ -28,3 +28,23 @@ env: dev
 envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
+  - name: DATABASE_HOST
+    value: "mysql.mysql.svc.cluster.local"
+  - name: DATABASE_NAME
+    value: "user"
+  - name: JPA_DDL_AUTO
+    value: "create"
+  - name: DATABASE_USER
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: DATABASE_USER
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: DATABASE_PASSWORD
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: kafka.kafka.svc.cluster.local:9092
+  - name: REDIS_HOST
+    value: redis.redis.svc.cluster.local
