@@ -1,0 +1,25 @@
+mysql:
+  image:
+    repository: mysql
+    tag: 8.0.31
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 1
+  
+  service:
+    type: LoadBalancer
+    port: 3306
+    loadBalancerSourceRanges: "112.186.245.109/32"
+
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    size: 10Gi
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
