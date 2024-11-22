@@ -46,7 +46,7 @@ ingress:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: kafka-ui
+              name: kafka-ui.kafka.svc.cluster.local
               port:
                 number: 80
 
