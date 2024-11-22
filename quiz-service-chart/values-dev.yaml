@@ -29,7 +29,7 @@ envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
   - name: DATABASE_HOST
-    value: "10.38.0.3"
+    value: "10.21.227.89"
   - name: DATABASE_NAME
     value: "quiz"
   - name: JPA_DDL_AUTO
