@@ -27,26 +27,18 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "nginx"
+  className: "gce"
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-  
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
   hosts:
     - host: ""
       paths:
-        - path: /(.*)
+        - path: /*
           pathType: ImplementationSpecific
           backend:
             service:
               name: dev-gateway-service
-              port:
-                number: 80
-        - path: /ui/(.*)
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: kafka-ui
               port:
                 number: 80
 
