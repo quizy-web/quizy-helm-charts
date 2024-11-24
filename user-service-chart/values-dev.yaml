@@ -50,3 +50,5 @@ envs:
     value: redis.redis.svc.cluster.local
   - name: JWT_SECRET
     value: 11231233-asdfasdfasdf-1231231-gfdsgsdfgs-23423423-dsafsadf
+  - name: JAVA_OPTS
+    value: "-Dsun.net.inetaddr.ttl=0 -Dsun.net.inetaddr.negative.ttl=0"
