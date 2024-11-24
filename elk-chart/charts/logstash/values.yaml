@@ -1,0 +1,16 @@
+image:
+  repository: docker.elastic.co/logstash/logstash
+  tag: 8.11.0
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  ports:
+    - name: beats
+      port: 5044
+      targetPort: 5044
+    - name: tcp
+      port: 5000
+      targetPort: 5000

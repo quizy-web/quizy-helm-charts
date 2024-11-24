@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-logstash
+  labels:
+    app: logstash
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+        - name: logstash
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+        {{- range .Values.service.ports }}
+            - containerPort: {{ .targetPort }}
+              name: {{ .name }}
+        {{- end }}
+          env:
+            - name: ELASTICSEARCH_HOST
+              value: "{{ .Release.Name }}-elasticsearch"
+          volumeMounts:
+            - name: config
+              mountPath: /usr/share/logstash/config/logstash.yml
+              subPath: logstash.yml
+            - name: config
+              mountPath: /usr/share/logstash/config/pipelines.yml
+              subPath: pipelines.yml
+            - name: config
+              mountPath: /usr/share/logstash/pipeline/logstash.conf
+              subPath: pipeline.conf
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Release.Name }}-logstash-config

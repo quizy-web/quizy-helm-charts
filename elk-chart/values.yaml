@@ -1,0 +1,42 @@
+elasticsearch:
+  enabled: true
+  image:
+    repository: docker.elastic.co/elasticsearch/elasticsearch
+    tag: 8.11.0
+  replicaCount: 3
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    size: 5Gi
+  config:
+    clusterName: "elasticsearch-cluster"
+    nodeGroup: "master"
+    roles: "master,data,ingest"
+    heapSize: "512m"
+
+logstash:
+  enabled: true
+  image:
+    repository: docker.elastic.co/logstash/logstash
+    tag: 8.11.0
+  replicaCount: 1
+  service:
+    type: ClusterIP
+    ports:
+      - name: beats
+        port: 5044
+        targetPort: 5044
+      - name: tcp
+        port: 5000
+        targetPort: 5000
+
+kibana:
+  enabled: true
+  image:
+    repository: docker.elastic.co/kibana/kibana
+    tag: 8.11.0
+  replicaCount: 1
+  service:
+    type: LoadBalancer
+    port: 5601
+    loadBalancerSourceRanges: "112.186.245.109/32"

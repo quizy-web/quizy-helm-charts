@@ -1,0 +1,11 @@
+image:
+  repository: docker.elastic.co/kibana/kibana
+  tag: 8.11.0
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: LoadBalancer
+  port: 5601
+  loadBalancerSourceRanges: "112.186.245.109/32"
