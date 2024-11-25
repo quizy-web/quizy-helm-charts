@@ -48,6 +48,9 @@ envs:
   - name: GATEWAY_HOST
     value: "34.144.200.195"
   - name: JWT_SECRET
-    value: "secret-sadfasdfasdf-sadfasdfasdf-asdfasdf-asdf-123123"
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: JWT_SECRET
   - name: REDIS_HOST
     value: redis.redis.svc.cluster.local
