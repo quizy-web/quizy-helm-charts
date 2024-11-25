@@ -38,7 +38,7 @@ ingress:
       hosts:
         - quizy.p-e.kr
   hosts:
-    - host: ""
+    - host: quizy.p-e.kr
       paths:
         - path: /*
           pathType: ImplementationSpecific
@@ -51,8 +51,6 @@ env: dev
 envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
-  - name: GATEWAY_HOST
-    value: "34.144.200.195"
   - name: JWT_SECRET
     valueFrom:
       secretKeyRef:
