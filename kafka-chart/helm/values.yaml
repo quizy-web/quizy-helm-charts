@@ -3,7 +3,7 @@ global:
   imageRegistry: "asia-northeast3-docker.pkg.dev/civic-champion-442512-n9/quizy"
 
 kafka:
-  replicaCount: 1
+  replicaCount: 3
   logsDirs: /bitnami/kafka/logs
   persistence:
     size: 1Gi
