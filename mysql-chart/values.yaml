@@ -11,7 +11,9 @@ mysql:
     port: 3306
     loadBalancerSourceRanges:
       - "112.186.245.109/32"
-      - "113.198.180.0/24"
+      - "220.120.36.185/32"
+      - "183.101.19.11/32"
+      - "210.96.46.172/32"
 
   persistence:
     enabled: true

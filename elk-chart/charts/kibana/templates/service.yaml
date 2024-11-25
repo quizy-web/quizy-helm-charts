@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.service.type }}
   {{- if and (eq .Values.service.type "LoadBalancer") .Values.service.loadBalancerSourceRanges }}
   loadBalancerSourceRanges:
-    - {{ .Values.service.loadBalancerSourceRanges }}
+    {{- toYaml .Values.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
     - port: {{ .Values.service.port }}
