@@ -48,3 +48,5 @@ envs:
     value: kafka.kafka.svc.cluster.local:9092
   - name: REDIS_HOST
     value: redis.redis.svc.cluster.local
+  - name: ELASTICSEARCH_HOST
+    value: elk-elasticsearch.elk.svc.cluster.local
