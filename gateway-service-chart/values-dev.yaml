@@ -32,7 +32,7 @@ ingress:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
-    cert-manager.io/issuer: letsencrypt-staging
+    cert-manager.io/issuer: letsencrypt-production
   tls:
     - secretName: web-ssl
       hosts:
