@@ -6,7 +6,7 @@ spec:
   type: {{ .Values.mysql.service.type }}
   {{- if .Values.mysql.service.loadBalancerSourceRanges }}
   loadBalancerSourceRanges:
-    - "{{ .Values.mysql.service.loadBalancerSourceRanges }}"
+    {{- toYaml .Values.mysql.service.loadBalancerSourceRanges | nindent 4 }}
   {{- end }}
   ports:
     - port: {{ .Values.mysql.service.port }}

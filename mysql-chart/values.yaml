@@ -9,7 +9,9 @@ mysql:
   service:
     type: LoadBalancer
     port: 3306
-    loadBalancerSourceRanges: "112.186.245.109/32"
+    loadBalancerSourceRanges:
+      - "112.186.245.109/32"
+      - "113.198.180.0/24"
 
   persistence:
     enabled: true
