@@ -14,7 +14,10 @@ spec:
         app: elasticsearch
     spec:
       securityContext:
-        {{- toYaml .Values.securityContext | nindent 8 }}
+       {{- toYaml .Values.securityContext | nindent 8 }}
+      volumes:
+        - name: plugins
+          emptyDir: {}
       initContainers:
         - name: sysctl
           image: busybox
@@ -29,6 +32,16 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/share/elasticsearch/data
+        - name: install-nori-plugin
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command:
+            - sh
+            - -c
+            - |
+              bin/elasticsearch-plugin install --batch analysis-nori
+          volumeMounts:
+            - name: plugins
+              mountPath: /usr/share/elasticsearch/plugins
       containers:
         - name: elasticsearch
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -58,6 +71,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/share/elasticsearch/data
+            - name: plugins
+              mountPath: /usr/share/elasticsearch/plugins
   volumeClaimTemplates:
     - metadata:
         name: data
