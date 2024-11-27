@@ -50,3 +50,18 @@ envs:
     value: redis.redis.svc.cluster.local
   - name: ELASTICSEARCH_HOST
     value: elk-elasticsearch.elk.svc.cluster.local
+  - name: GCP_PROJECT_ID
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: GCP_PROJECT_ID
+  - name: BUCKET_NAME
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: BUCKET_NAME
+  - name: GCS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: GCS_KEY
