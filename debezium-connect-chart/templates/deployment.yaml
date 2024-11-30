@@ -1,0 +1,67 @@
+# templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "debezium-connect-chart.fullname" . }}
+  labels:
+    {{- include "debezium-connect-chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "debezium-connect-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "debezium-connect-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8083
+              protocol: TCP
+          env:
+            - name: CONNECT_BOOTSTRAP_SERVERS
+              value: {{ .Values.kafka.bootstrapServers }}
+            - name: CONNECT_ZOOKEEPER_CONNECT
+              value: {{ .Values.kafka.zookeeperConnect }}
+            - name: CONNECT_GROUP_ID
+              value: "compose-connect-group"
+            - name: CONNECT_CONFIG_STORAGE_TOPIC
+              value: {{ .Values.configStorage.topic }}
+            - name: CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR
+              value: "{{ .Values.configStorage.replicationFactor }}"
+            - name: CONNECT_OFFSET_FLUSH_INTERVAL_MS
+              value: "10000"
+            - name: CONNECT_OFFSET_STORAGE_TOPIC
+              value: {{ .Values.offsetStorage.topic }}
+            - name: CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR
+              value: "{{ .Values.offsetStorage.replicationFactor }}"
+            - name: CONNECT_STATUS_STORAGE_TOPIC
+              value: {{ .Values.statusStorage.topic }}
+            - name: CONNECT_STATUS_STORAGE_REPLICATION_FACTOR
+              value: "{{ .Values.statusStorage.replicationFactor }}"
+            - name: CONNECT_KEY_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_VALUE_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_INTERNAL_KEY_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_INTERNAL_VALUE_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_PLUGIN_PATH
+              value: "/usr/share/java"
+            - name: CONNECT_LOG4J_LOGGERS
+              value: "org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR"
+            - name: CONNECT_REST_HOST_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: CONNECT_REST_ADVERTISED_HOST_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: CONNECT_REST_PORT
+              value: "8083"

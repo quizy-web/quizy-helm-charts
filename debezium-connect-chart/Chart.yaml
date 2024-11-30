@@ -1,0 +1,5 @@
+apiVersion: v2
+name: debezium-connect
+description: A Helm chart for Kafka Connect with Debezium MySQL connector
+version: 0.1.0
+appVersion: "1.0.0"

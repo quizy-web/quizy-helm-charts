@@ -1,0 +1,16 @@
+# templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "debezium-connect-chart.fullname" . }}
+  labels:
+    {{- include "debezium-connect-chart.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8083
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "debezium-connect-chart.selectorLabels" . | nindent 4 }}
