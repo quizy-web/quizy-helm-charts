@@ -33,7 +33,7 @@ envs:
   - name: DATABASE_NAME
     value: "quiz"
   - name: JPA_DDL_AUTO
-    value: "create"
+    value: "update"
   - name: DATABASE_USER
     valueFrom:
       secretKeyRef:
