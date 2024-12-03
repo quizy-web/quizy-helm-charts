@@ -25,6 +25,9 @@ service:
   port: 8080
   targetPort: 8080
 env: dev
+
 envs:
   - name: SPRING_PROFILES_ACTIVE
     value: "dev"
+  - name: REDIS_HOST
+    value: "redis.redis.svc.cluster.local"
