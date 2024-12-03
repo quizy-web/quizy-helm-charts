@@ -65,3 +65,7 @@ envs:
       secretKeyRef:
         name: user-service-dev
         key: GCS_KEY
+  - name: LOGSTASH_HOST
+    value: elk-logstash.elk.svc.cluster.local
+  - name: LOGSTASH_PORT
+    value: "5044"
