@@ -1,0 +1,16 @@
+{
+  "index_patterns": ["logstash-*"],
+  "priority": 200,
+  "template": {
+    "settings": {
+      "number_of_shards": 1
+    },
+    "mappings": {
+      "properties": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

@@ -11,3 +11,6 @@ data:
 
   pipeline.conf: |
 {{ .Files.Get "config/pipeline.conf" | indent 4 }}
+
+  logstash.json: |
+{{ .Files.Get "config/logstash.json" | indent 4 }}
