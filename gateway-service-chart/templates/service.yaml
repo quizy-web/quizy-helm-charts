@@ -4,6 +4,8 @@ metadata:
   name: {{ include "gateway-service-chart.fullname" . }}
   labels:
     {{- include "gateway-service-chart.labels" . | nindent 4 }}
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80":"my-backendconfig"}}' # BackendConfig 연결
 spec:
   type: {{ .Values.service.type }}
   ports:
