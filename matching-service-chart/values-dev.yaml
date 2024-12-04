@@ -30,3 +30,21 @@ envs:
     value: "dev"
   - name: REDIS_HOST
     value: "redis.redis.svc.cluster.local"
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: "kafka.kafka.svc.cluster.local:9092"
+  - name: DATABASE_HOST
+    value: "mysql-mysql.mysql.svc.cluster.local"
+  - name: DATABASE_NAME
+    value: "matching"
+  - name: JPA_DDL_AUTO
+    value: "update"
+  - name: DATABASE_USER
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: DATABASE_USER
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: user-service-dev
+        key: DATABASE_PASSWORD
