@@ -3,7 +3,7 @@ kind: BackendConfig
 metadata:
   name: my-backendconfig
 spec:
-  timeoutSec: 300
+  timeoutSec: 86400
   connectionDraining:
     drainingTimeoutSec: 300
   cdn:
