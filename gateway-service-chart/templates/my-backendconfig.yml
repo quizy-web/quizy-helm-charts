@@ -4,8 +4,7 @@ metadata:
   name: my-backendconfig
 spec:
   timeoutSec: 300
-  customRequestHeaders:
-    headers:
-      - "Connection: keep-alive"
+  connectionDraining:
+    drainingTimeoutSec: 300
   cdn:
     enabled: false
