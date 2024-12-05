@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "6cfe593c108e1cbf25ec7b5b341599e8242df567-12155433658"
+  tag: "8f15c249ea9d8fd13d18443ce7298232f6907e79-12182425146"
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 fullnameOverride: "dev-user-service"
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
@@ -90,4 +90,3 @@ envs:
         key: GCS_KEY
   - name: GCP_CDN_DOMAIN
     value: quizy-cdn.n-e.kr
-
