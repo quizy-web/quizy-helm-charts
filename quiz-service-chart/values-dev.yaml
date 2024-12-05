@@ -69,3 +69,5 @@ envs:
     value: elk-logstash.elk.svc.cluster.local
   - name: LOGSTASH_PORT
     value: "5044"
+  - name: GCP_CDN_DOMAIN
+    value: quizy-cdn.n-e.kr

@@ -88,3 +88,6 @@ envs:
       secretKeyRef:
         name: user-service-dev
         key: GCS_KEY
+  - name: GCP_CDN_DOMAIN
+    value: quizy-cdn.n-e.kr
+
