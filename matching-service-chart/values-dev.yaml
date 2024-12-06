@@ -37,7 +37,7 @@ envs:
   - name: DATABASE_NAME
     value: "matching"
   - name: JPA_DDL_AUTO
-    value: "create"
+    value: "update"
   - name: DATABASE_USER
     valueFrom:
       secretKeyRef:
