@@ -5,6 +5,7 @@ global:
 kafka:
   replicaCount: 3
   logsDirs: /bitnami/kafka/logs
+  deleteTopicEnable: true
   persistence:
     size: 1Gi
   heapOpts: -Xmx512m -Xms512m
