@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: redis
+  repository: redis/redis-stack
   pullPolicy: IfNotPresent
-  tag: "7.2"
+  tag: "latest"
 
 nameOverride: ""
 fullnameOverride: "redis"
