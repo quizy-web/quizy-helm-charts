@@ -1,6 +1,6 @@
 global:
   storageClass: premium-rwo-retain-zonal
-  imageRegistry: "asia-northeast3-docker.pkg.dev/civic-champion-442512-n9/quizy"
+  imageRegistry: "asia-northeast3-docker.pkg.dev/quizy-442816/quizy"
 
 kafka:
   replicaCount: 3

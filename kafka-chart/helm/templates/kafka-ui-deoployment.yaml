@@ -25,10 +25,12 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8080
+            initialDelaySeconds: 160
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
+            initialDelaySeconds: 160
           env:
             {{- range .Values.kafkaUi.envs }}
             - name: {{ .name }}
