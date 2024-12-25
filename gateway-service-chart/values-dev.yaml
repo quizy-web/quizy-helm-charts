@@ -32,11 +32,11 @@ ingress:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.global-static-ip-name: "gateway-ip"
-    cert-manager.io/issuer: letsencrypt-production
-  tls:
-    - hosts:
-        - quizy.n-e.kr
-      secretName: web-ssl
+#    cert-manager.io/issuer: letsencrypt-production
+#  tls:
+#    - hosts:
+#        - quizy.n-e.kr
+#      secretName: web-ssl
   hosts:
     - host: "quizy.n-e.kr"
       paths:
